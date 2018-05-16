@@ -46,7 +46,7 @@ function numberPress(number) {
 function operation(op) {
     var localOperationMemory = display.value;
     
-    if (MemoryNewNumber && MemoryPendingOperation !== '=') {
+    if (MemoryNewNumber && MemoryPendingOperation !== '=' && MemoryPendingOperation !== 'x^' && MemoryPendingOperation !== '√')  {
         display.value = MemoryCurrentNumber;
     } else {
         MemoryNewNumber = true;
@@ -58,8 +58,10 @@ function operation(op) {
             MemoryCurrentNumber *= parseFloat(localOperationMemory);
         } else if (MemoryPendingOperation === '/') {
             MemoryCurrentNumber /= parseFloat(localOperationMemory);
-        } else if (MemoryPendingOperation === '√') { 
+        } else if (MemoryPendingOperation === 'x^') { 
             MemoryCurrentNumber = Math.sqrt(localOperationMemory);
+            } else if (MemoryPendingOperation === '√') { 
+            MemoryCurrentNumber *= MemoryCurrentNumber ;
         } else {
             MemoryCurrentNumber = parseFloat(localOperationMemory);
         };
